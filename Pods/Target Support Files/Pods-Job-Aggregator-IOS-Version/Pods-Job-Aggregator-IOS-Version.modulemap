@@ -1,0 +1,6 @@
+framework module Pods_Job_Aggregator_IOS_Version {
+  umbrella header "Pods-Job-Aggregator-IOS-Version-umbrella.h"
+
+  export *
+  module * { export * }
+}
