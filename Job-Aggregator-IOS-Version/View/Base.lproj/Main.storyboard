@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="Kl8-L2-Pdp">
             <objects>
-                <viewController id="t6x-TX-esW" sceneMemberID="viewController">
+                <viewController id="t6x-TX-esW" customClass="EditViewController" customModule="Job_Aggregator_IOS_Version" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWJ-OV-JE7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EY3-rC-A4q">
-                                <rect key="frame" x="105" y="330" width="61" height="30"/>
+                                <rect key="frame" x="74" y="330" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -85,6 +85,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dAe-0Q-K7W"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="5Uq-dF-zKj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aCD-ud-clJ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="EditVacancyCity" destination="lEK-34-eSs" id="WY1-3q-ZWU"/>
+                        <outlet property="EditVacancyName" destination="NgR-wN-aIN" id="CXc-Gm-Npg"/>
+                        <outlet property="EditVacancySalaryMax" destination="tGx-nN-SJ9" id="7AM-Ar-pwd"/>
+                        <outlet property="EditVacancySalaryMin" destination="tGx-nN-SJ9" id="cyF-2x-TOc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tld-xQ-Vo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,21 +111,36 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="nU6-Cr-5iJ" kind="relationship" relationship="rootViewController" id="fSZ-sk-45U"/>
+                        <segue destination="nU6-Cr-5iJ" kind="relationship" relationship="rootViewController" id="kNE-bX-niH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UzT-YE-dmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-385" y="589"/>
+            <point key="canvasLocation" x="-313" y="587"/>
         </scene>
-        <!--View Controller-->
+        <!--First Search View Controller-->
         <scene sceneID="Fec-EK-8YG">
             <objects>
-                <viewController id="rd9-8l-nRu" sceneMemberID="viewController">
+                <viewController id="rd9-8l-nRu" customClass="FirstSearchViewController" customModule="Job_Aggregator_IOS_Version" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E1V-t0-PHZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qY0-xW-oMO">
+                                <rect key="frame" x="291" y="390" width="68" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="firstSearchButton:" destination="rd9-8l-nRu" eventType="touchUpInside" id="aJB-FY-LYr"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Город" textAlignment="natural" minimumFontSize="17" background="IQButtonBarArrowLeft.png" translatesAutoresizingMaskIntoConstraints="NO" id="6s1-og-aOy">
+                                <rect key="frame" x="38" y="428" width="245" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вакансия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJb-Wd-D5f">
                                 <rect key="frame" x="38" y="390" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -124,36 +148,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6s1-og-aOy">
-                                <rect key="frame" x="38" y="428" width="245" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qY0-xW-oMO">
-                                <rect key="frame" x="291" y="390" width="68" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="ZfJ-Nu-KaW" kind="presentation" id="5MS-xK-Dwv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dHe-JZ-v26"/>
                     </view>
                     <navigationItem key="navigationItem" id="hmK-Nc-4dI"/>
+                    <connections>
+                        <outlet property="vacancyCitySearchText" destination="6s1-og-aOy" id="1Td-cy-ogq"/>
+                        <outlet property="vacancyNameSearchText" destination="zJb-Wd-D5f" id="v4K-5M-cbX"/>
+                        <segue destination="ZfJ-Nu-KaW" kind="show" identifier="firstSearchSegue" id="on1-VH-89A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ng-sK-QAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1175.2" y="588.91625615763553"/>
+            <point key="canvasLocation" x="-1166" y="587"/>
         </scene>
-        <!--View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="8GE-07-pd4">
             <objects>
-                <viewController id="nU6-Cr-5iJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bcr-fi-4HR">
+                <viewController id="nU6-Cr-5iJ" customClass="TableViewController" customModule="Job_Aggregator_IOS_Version" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bcr-fi-4HR" customClass="UITableView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -192,11 +206,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="4cB-Sz-oXH" kind="show" id="flG-wC-y0i"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nU6-Cr-5iJ" id="kfR-I5-VXN"/>
+                                    <outlet property="delegate" destination="nU6-Cr-5iJ" id="plf-Hb-tgO"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,44 +219,35 @@
                     </view>
                     <navigationItem key="navigationItem" id="rf8-c9-t2F">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="pIK-Hi-OrU">
+                            <connections>
+                                <segue destination="rd9-8l-nRu" kind="showDetail" identifier="backToFirstSearchSegue" animates="NO" id="YCa-Hu-fic"/>
+                            </connections>
+                        </barButtonItem>
                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="fnb-Sk-Js1">
-                            <rect key="frame" x="8" y="7" width="262" height="30"/>
+                            <rect key="frame" x="50" y="7" width="275" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="p8M-Yr-9iN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3U6-iO-q7r">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="p8M-Yr-9iN">
+                            <connections>
+                                <action selector="EditSearchButton:" destination="nU6-Cr-5iJ" id="5UU-0k-yjz"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="currientVacancySearch" destination="fnb-Sk-Js1" id="q8q-sY-nRu"/>
                         <segue destination="t6x-TX-esW" kind="show" identifier="editSearchSegue" id="19T-ac-d8B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbo-UM-qCS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="587"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="sjO-Sk-jeg">
-            <objects>
-                <viewController id="4cB-Sz-oXH" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ufj-Mf-qao">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Isg-Mc-jnR"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="kxs-r3-Uxo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dpd-Sn-Uzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1178" y="1037"/>
+            <point key="canvasLocation" x="404" y="586.69950738916259"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="IQButtonBarArrowLeft.png" width="12" height="21"/>
+    </resources>
 </document>

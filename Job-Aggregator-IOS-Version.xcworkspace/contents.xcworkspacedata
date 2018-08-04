@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/aleksandrsahnukov/Desktop/&#x43f;&#x440;&#x43e;&#x435;&#x43a;&#x442;&#x44b;/Job-Aggregator-IOS-Version/Job-Aggregator-IOS-Version/TableViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Job-Aggregator-IOS-Version.xcodeproj">
    </FileRef>
    <FileRef

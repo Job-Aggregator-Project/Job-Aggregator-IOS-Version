@@ -10,12 +10,15 @@
 		3A3FD9BA5532D1618AF2BD80 /* Pods_Job_Aggregator_IOS_Version.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE85799D3D6D3A5086E25E35 /* Pods_Job_Aggregator_IOS_Version.framework */; };
 		50F8A372765749525ADA6973 /* Pods_Job_Aggregator_IOS_VersionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC216419AC26BEAFE4D80ADF /* Pods_Job_Aggregator_IOS_VersionUITests.framework */; };
 		C10BEE9D211443FE00279627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BEE9C211443FE00279627 /* AppDelegate.swift */; };
-		C10BEE9F211443FE00279627 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BEE9E211443FE00279627 /* ViewController.swift */; };
 		C10BEEA2211443FE00279627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10BEEA0211443FE00279627 /* Main.storyboard */; };
 		C10BEEA42114440500279627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10BEEA32114440500279627 /* Assets.xcassets */; };
 		C10BEEA72114440500279627 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10BEEA52114440500279627 /* LaunchScreen.storyboard */; };
 		C10BEEB22114440600279627 /* Job_Aggregator_IOS_VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BEEB12114440600279627 /* Job_Aggregator_IOS_VersionTests.swift */; };
 		C10BEEBD2114440600279627 /* Job_Aggregator_IOS_VersionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BEEBC2114440600279627 /* Job_Aggregator_IOS_VersionUITests.swift */; };
+		C140B25721146A7F00EAC8B1 /* FirstSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */; };
+		C140B25B2116366900EAC8B1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25A2116366900EAC8B1 /* TableViewController.swift */; };
+		C140B25D21163EC400EAC8B1 /* VacancyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25C21163EC400EAC8B1 /* VacancyModel.swift */; };
+		C140B2612116438500EAC8B1 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B2602116438500EAC8B1 /* EditViewController.swift */; };
 		C5CF6D15CEC3251516BC1B7D /* Pods_Job_Aggregator_IOS_VersionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 867AE8F2D6B36517D296CE3B /* Pods_Job_Aggregator_IOS_VersionTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +48,6 @@
 		9A609B3A3AC3903E484A8C76 /* Pods-Job-Aggregator-IOS-VersionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Job-Aggregator-IOS-VersionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Job-Aggregator-IOS-VersionTests/Pods-Job-Aggregator-IOS-VersionTests.release.xcconfig"; sourceTree = "<group>"; };
 		C10BEE99211443FE00279627 /* Job-Aggregator-IOS-Version.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Job-Aggregator-IOS-Version.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10BEE9C211443FE00279627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C10BEE9E211443FE00279627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C10BEEA1211443FE00279627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C10BEEA32114440500279627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C10BEEA62114440500279627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +58,10 @@
 		C10BEEB82114440600279627 /* Job-Aggregator-IOS-VersionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Job-Aggregator-IOS-VersionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10BEEBC2114440600279627 /* Job_Aggregator_IOS_VersionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job_Aggregator_IOS_VersionUITests.swift; sourceTree = "<group>"; };
 		C10BEEBE2114440600279627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSearchViewController.swift; sourceTree = "<group>"; };
+		C140B25A2116366900EAC8B1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = "/Users/aleksandrsahnukov/Desktop/проекты/Job-Aggregator-IOS-Version/Job-Aggregator-IOS-Version/TableViewController.swift"; sourceTree = "<absolute>"; };
+		C140B25C21163EC400EAC8B1 /* VacancyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyModel.swift; sourceTree = "<group>"; };
+		C140B2602116438500EAC8B1 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		D76EFDEB574DAFE87EC4869B /* Pods-Job-Aggregator-IOS-VersionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Job-Aggregator-IOS-VersionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Job-Aggregator-IOS-VersionTests/Pods-Job-Aggregator-IOS-VersionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE85799D3D6D3A5086E25E35 /* Pods_Job_Aggregator_IOS_Version.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Job_Aggregator_IOS_Version.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC216419AC26BEAFE4D80ADF /* Pods_Job_Aggregator_IOS_VersionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Job_Aggregator_IOS_VersionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,11 +143,11 @@
 		C10BEE9B211443FE00279627 /* Job-Aggregator-IOS-Version */ = {
 			isa = PBXGroup;
 			children = (
+				C140B263211643AB00EAC8B1 /* View */,
+				C140B2622116439000EAC8B1 /* Controllers */,
+				C140B264211643B600EAC8B1 /* Model */,
 				C10BEE9C211443FE00279627 /* AppDelegate.swift */,
-				C10BEE9E211443FE00279627 /* ViewController.swift */,
-				C10BEEA0211443FE00279627 /* Main.storyboard */,
 				C10BEEA32114440500279627 /* Assets.xcassets */,
-				C10BEEA52114440500279627 /* LaunchScreen.storyboard */,
 				C10BEEA82114440500279627 /* Info.plist */,
 			);
 			path = "Job-Aggregator-IOS-Version";
@@ -163,6 +169,33 @@
 				C10BEEBE2114440600279627 /* Info.plist */,
 			);
 			path = "Job-Aggregator-IOS-VersionUITests";
+			sourceTree = "<group>";
+		};
+		C140B2622116439000EAC8B1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C140B2602116438500EAC8B1 /* EditViewController.swift */,
+				C140B25A2116366900EAC8B1 /* TableViewController.swift */,
+				C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C140B263211643AB00EAC8B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C10BEEA0211443FE00279627 /* Main.storyboard */,
+				C10BEEA52114440500279627 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C140B264211643B600EAC8B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C140B25C21163EC400EAC8B1 /* VacancyModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,8 +412,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10BEE9F211443FE00279627 /* ViewController.swift in Sources */,
+				C140B2612116438500EAC8B1 /* EditViewController.swift in Sources */,
+				C140B25721146A7F00EAC8B1 /* FirstSearchViewController.swift in Sources */,
 				C10BEE9D211443FE00279627 /* AppDelegate.swift in Sources */,
+				C140B25B2116366900EAC8B1 /* TableViewController.swift in Sources */,
+				C140B25D21163EC400EAC8B1 /* VacancyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
