@@ -147,4 +147,7 @@ var vacancySalaryFrom = "4"
         vacancySalaryFrom = info[3]
         
     }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+    }
 }
