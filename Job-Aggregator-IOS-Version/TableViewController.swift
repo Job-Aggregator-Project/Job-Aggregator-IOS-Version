@@ -71,9 +71,9 @@ var vacancySalaryFrom = "4"
         let cancel = UIAlertAction(title: "Ок", style: .cancel, handler: nil)
         present(ac, animated: true, completion: nil)
         ac.addAction(cancel)
+        }
     }
-    }
-    }
+}
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "vacancyCell", for: indexPath) as! VacancyTableViewCell
@@ -83,13 +83,10 @@ var vacancySalaryFrom = "4"
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        vacancyList.removeAll()
     }
-    */
 
     /*
     // Override to support editing the table view.
