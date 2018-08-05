@@ -32,8 +32,8 @@ var vacancySalaryFrom = "4"
         
 
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
 
         let vacancy = Vacancy(id: 1, name: self.vacancyName, area: vacancyArea, url: "https://hh.ru/vacancy/26725000", salaryTo: vacancySalaryTo, salaryFrom: vacancySalaryFrom, currency: "r")
