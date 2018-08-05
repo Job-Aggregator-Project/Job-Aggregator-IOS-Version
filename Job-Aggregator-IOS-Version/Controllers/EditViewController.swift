@@ -8,7 +8,26 @@
 
 import UIKit
 
+protocol EditViewControllerDelagate {
+    func fillTheLablesWith(info:Array<String>)
+}
+
+
+
 class EditViewController: UIViewController {
+    var vacancyEditName = ""
+    var vacancyEditArea = ""
+    var vacancyEditSalaryTo = ""
+    var vacancyEditSalaryFrom = ""
+    
+    var delage: EditViewControllerDelagate?
+    
+    @IBAction func SaveSearchEditButtno(_ sender: Any) {
+        let info:[String] = [EditVacancyName.text!,EditVacancyCity.text!,EditVacancySalaryMin.text!,EditVacancySalaryMax.text!]
+    delage?.fillTheLablesWith(info: info)
+    navigationController?.popViewController(animated: true)
+    }
+    
     @IBOutlet weak var EditVacancyName: UITextField!
     @IBOutlet weak var EditVacancyCity: UITextField!
     @IBOutlet weak var EditVacancySalaryMin: UITextField!
@@ -26,7 +45,13 @@ class EditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+     EditVacancyName.text = vacancyEditName
+         EditVacancyCity.text = vacancyEditArea
+         EditVacancySalaryMax.text = vacancyEditSalaryFrom
+         EditVacancySalaryMin.text = vacancyEditSalaryTo
+    }
     /*
     // MARK: - Navigation
 

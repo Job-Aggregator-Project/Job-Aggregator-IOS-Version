@@ -11,7 +11,9 @@ import SafariServices
 
 
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController,EditViewControllerDelagate {
+  
+    
 var vacancyName = "1"
 var vacancyArea = "2"
 var vacancySalaryTo = "3"
@@ -24,14 +26,12 @@ var vacancySalaryFrom = "4"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         currientVacancySearch.text = vacancyName
         print(vacancyArea,vacancyName,vacancySalaryTo,vacancySalaryFrom)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,5 +111,21 @@ var vacancySalaryFrom = "4"
             dvc.firstSearchVacancyName = vacancyName
             dvc.firstSearchvacancyArea = vacancyArea
         }
+        if segue.identifier == "editSearchSegue" {
+            let dvc = segue.destination as! EditViewController
+            dvc.vacancyEditName = vacancyName
+            dvc.vacancyEditArea = vacancyArea
+            dvc.vacancyEditSalaryTo = vacancySalaryTo
+            dvc.vacancyEditSalaryFrom = vacancySalaryFrom
+            dvc.delage = self
+        }
+
+    }
+    func fillTheLablesWith(info: Array<String>) {
+      vacancyName = info[0]
+      vacancyArea = info[1]
+        vacancySalaryTo = info[2]
+        vacancySalaryFrom = info[3]
+        
     }
 }

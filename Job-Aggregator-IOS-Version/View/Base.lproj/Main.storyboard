@@ -86,13 +86,17 @@
                         <viewLayoutGuide key="safeArea" id="dAe-0Q-K7W"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="5Uq-dF-zKj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aCD-ud-clJ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aCD-ud-clJ">
+                            <connections>
+                                <action selector="SaveSearchEditButtno:" destination="t6x-TX-esW" id="Mi2-rS-VeS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="EditVacancyCity" destination="lEK-34-eSs" id="WY1-3q-ZWU"/>
                         <outlet property="EditVacancyName" destination="NgR-wN-aIN" id="CXc-Gm-Npg"/>
                         <outlet property="EditVacancySalaryMax" destination="tGx-nN-SJ9" id="7AM-Ar-pwd"/>
-                        <outlet property="EditVacancySalaryMin" destination="tGx-nN-SJ9" id="cyF-2x-TOc"/>
+                        <outlet property="EditVacancySalaryMin" destination="EY3-rC-A4q" id="gJC-HG-Fpw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tld-xQ-Vo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
