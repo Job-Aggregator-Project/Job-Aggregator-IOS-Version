@@ -15,6 +15,7 @@
 		C10BEEA72114440500279627 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10BEEA52114440500279627 /* LaunchScreen.storyboard */; };
 		C10BEEB22114440600279627 /* Job_Aggregator_IOS_VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BEEB12114440600279627 /* Job_Aggregator_IOS_VersionTests.swift */; };
 		C10BEEBD2114440600279627 /* Job_Aggregator_IOS_VersionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BEEBC2114440600279627 /* Job_Aggregator_IOS_VersionUITests.swift */; };
+		C1321B44211724FF00564774 /* VacancyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1321B43211724FF00564774 /* VacancyTableViewCell.swift */; };
 		C140B25721146A7F00EAC8B1 /* FirstSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */; };
 		C140B25B2116366900EAC8B1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25A2116366900EAC8B1 /* TableViewController.swift */; };
 		C140B25D21163EC400EAC8B1 /* VacancyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25C21163EC400EAC8B1 /* VacancyModel.swift */; };
@@ -58,6 +59,7 @@
 		C10BEEB82114440600279627 /* Job-Aggregator-IOS-VersionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Job-Aggregator-IOS-VersionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10BEEBC2114440600279627 /* Job_Aggregator_IOS_VersionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job_Aggregator_IOS_VersionUITests.swift; sourceTree = "<group>"; };
 		C10BEEBE2114440600279627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1321B43211724FF00564774 /* VacancyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyTableViewCell.swift; sourceTree = "<group>"; };
 		C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSearchViewController.swift; sourceTree = "<group>"; };
 		C140B25A2116366900EAC8B1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = "/Users/aleksandrsahnukov/Desktop/проекты/Job-Aggregator-IOS-Version/Job-Aggregator-IOS-Version/TableViewController.swift"; sourceTree = "<absolute>"; };
 		C140B25C21163EC400EAC8B1 /* VacancyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyModel.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				C140B2602116438500EAC8B1 /* EditViewController.swift */,
 				C140B25A2116366900EAC8B1 /* TableViewController.swift */,
 				C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */,
+				C1321B43211724FF00564774 /* VacancyTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C140B2612116438500EAC8B1 /* EditViewController.swift in Sources */,
+				C1321B44211724FF00564774 /* VacancyTableViewCell.swift in Sources */,
 				C140B25721146A7F00EAC8B1 /* FirstSearchViewController.swift in Sources */,
 				C10BEE9D211443FE00279627 /* AppDelegate.swift in Sources */,
 				C140B25B2116366900EAC8B1 /* TableViewController.swift in Sources */,

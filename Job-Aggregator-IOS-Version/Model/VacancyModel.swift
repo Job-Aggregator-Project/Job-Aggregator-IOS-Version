@@ -7,3 +7,26 @@
 //
 
 import Foundation
+
+struct Vacancy {
+    var id: Int
+    var name: String
+    var area: String
+    var url: String
+    var salaryTo: String
+    var salaryFrom: String
+    var currency: String
+  
+    
+    init (id: Int, name:String, area:String, url:String, salaryTo:String, salaryFrom: String, currency:String) {
+        
+        self.id = id
+        self.name = name
+        self.area = area
+        self.url = url
+        self.salaryTo = salaryTo
+        self.salaryFrom = salaryFrom
+        self.currency = currency
+     
+    }
+}

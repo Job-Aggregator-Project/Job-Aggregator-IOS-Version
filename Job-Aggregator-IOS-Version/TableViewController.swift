@@ -12,8 +12,8 @@ import SafariServices
 
 
 class TableViewController: UITableViewController,EditViewControllerDelagate {
-  
-    
+
+var vacancyList = Array<Vacancy>()
 var vacancyName = "1"
 var vacancyArea = "2"
 var vacancySalaryTo = "3"
@@ -27,11 +27,19 @@ var vacancySalaryFrom = "4"
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         currientVacancySearch.text = vacancyName
-        print(vacancyArea,vacancyName,vacancySalaryTo,vacancySalaryFrom)
+
+        let vacancy = Vacancy(id: 1, name: self.vacancyName, area: vacancyArea, url: "https://hh.ru/vacancy/26725000", salaryTo: vacancySalaryTo, salaryFrom: vacancySalaryFrom, currency: "r")
+        self.vacancyList.append(vacancy)
+        print("Жопа \(vacancyList)")
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,24 +50,38 @@ var vacancySalaryFrom = "4"
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return vacancyList.count
     }
 
-    /*
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellItem = vacancyList[indexPath.row]
+    if  let URL = URL(string: cellItem.url) {
+        if  UIApplication.shared.canOpenURL(URL) == true {
+        let svc = SFSafariViewController(url: URL)
+        self.present(svc, animated: true, completion: nil)
+    }
+    else
+    {    let ac = UIAlertController(title: "Ошибка", message: "Неверно введен URL адрес", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Ок", style: .cancel, handler: nil)
+        present(ac, animated: true, completion: nil)
+        ac.addAction(cancel)
+    }
+    }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "vacancyCell", for: indexPath) as! VacancyTableViewCell
+        let cellItem = vacancyList[indexPath.row]
+        cell.vacancyNameCell.text = cellItem.name
+        cell.vacancyAreaCell.text = cellItem.area
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
