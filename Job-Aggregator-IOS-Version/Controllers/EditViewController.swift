@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditViewControllerDelagate {
-    func fillTheLablesWith(info:Array<String>)
+    func fillTheLablesWith(info:Array<Any>)
 }
 
 
@@ -17,16 +17,25 @@ protocol EditViewControllerDelagate {
 class EditViewController: UIViewController {
     var vacancyEditName = ""
     var vacancyEditArea = ""
-    var vacancyEditSalaryTo = ""
-    var vacancyEditSalaryFrom = ""
+    var vacancyEditSalaryTo:Int = 0
+    var vacancyEditSalaryFrom: Int = 0
+    var SwitchSalary:Bool = true
     
     var delage: EditViewControllerDelagate?
     
-    @IBAction func SaveSearchEditButtno(_ sender: Any) {
-        let info:[String] = [EditVacancyName.text!,EditVacancyCity.text!,EditVacancySalaryMin.text!,EditVacancySalaryMax.text!]
-    delage?.fillTheLablesWith(info: info)
-    navigationController?.popViewController(animated: true)
+    @IBAction func SwitchSalaryButton(_ sender: Any) {
+        
+        
     }
+    @IBAction func SaveSearchEditButtno(_ sender: Any) {
+        if let salaryMinInt = Int(EditVacancySalaryMin.text!), let salaryMaxInt = Int(EditVacancySalaryMax.text!) {
+            let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMinInt,salaryMaxInt]
+            delage?.fillTheLablesWith(info: info)
+            navigationController?.popViewController(animated: true)
+        }
+        }
+        
+       
     
     @IBOutlet weak var EditVacancyName: UITextField!
     @IBOutlet weak var EditVacancyCity: UITextField!
@@ -36,7 +45,8 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        EditVacancySalaryMin.keyboardType = UIKeyboardType.numberPad
+        EditVacancySalaryMin.keyboardType = UIKeyboardType.numberPad
         // Do any additional setup after loading the view.
     }
 
@@ -47,10 +57,10 @@ class EditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-     EditVacancyName.text = vacancyEditName
+        EditVacancyName.text = vacancyEditName
          EditVacancyCity.text = vacancyEditArea
-         EditVacancySalaryMax.text = vacancyEditSalaryFrom
-         EditVacancySalaryMin.text = vacancyEditSalaryTo
+         EditVacancySalaryMax.text = "\(vacancyEditSalaryFrom)"
+         EditVacancySalaryMin.text = "\(vacancyEditSalaryTo)"
     }
     /*
     // MARK: - Navigation

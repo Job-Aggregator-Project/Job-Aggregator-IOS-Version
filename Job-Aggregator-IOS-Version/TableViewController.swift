@@ -16,8 +16,8 @@ class TableViewController: UITableViewController,EditViewControllerDelagate {
 var vacancyList = Array<Vacancy>()
 var vacancyName = "1"
 var vacancyArea = "2"
-var vacancySalaryTo = "3"
-var vacancySalaryFrom = "4"
+    var vacancySalaryTo: Int = 0
+    var vacancySalaryFrom: Int = 0
 
     @IBOutlet weak var currientVacancySearch: UITextField!
     @IBAction func EditSearchButton(_ sender: Any) {
@@ -140,11 +140,11 @@ var vacancySalaryFrom = "4"
         }
 
     }
-    func fillTheLablesWith(info: Array<String>) {
-      vacancyName = info[0]
-      vacancyArea = info[1]
-        vacancySalaryTo = info[2]
-        vacancySalaryFrom = info[3]
+    func fillTheLablesWith(info: Array<Any>) {
+      vacancyName = info[0] as! String
+      vacancyArea = info[1] as! String
+        vacancySalaryTo = info[2] as! Int
+        vacancySalaryFrom = info[3] as! Int
         
     }
     @objc func textFieldDidChange(_ textField: UITextField) {

@@ -13,12 +13,12 @@ struct Vacancy {
     var name: String
     var area: String
     var url: String
-    var salaryTo: String
-    var salaryFrom: String
+    var salaryTo: Int
+    var salaryFrom: Int
     var currency: String
   
     
-    init (id: Int, name:String, area:String, url:String, salaryTo:String, salaryFrom: String, currency:String) {
+    init (id: Int, name:String, area:String, url:String, salaryTo:Int, salaryFrom: Int, currency:String) {
         
         self.id = id
         self.name = name

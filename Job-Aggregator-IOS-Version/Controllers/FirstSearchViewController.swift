@@ -11,6 +11,7 @@ import UIKit
 class FirstSearchViewController: UIViewController {
     var firstSearchVacancyName = ""
     var firstSearchvacancyArea = ""
+    
 
     @IBOutlet weak var vacancyNameSearchText: UITextField!
     @IBOutlet weak var vacancyCitySearchText: UITextField!
