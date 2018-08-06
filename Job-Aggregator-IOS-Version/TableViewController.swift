@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SafariServices
+import SwiftyJSON
 
 
 
@@ -18,6 +19,7 @@ var vacancyName = "1"
 var vacancyArea = "2"
     var vacancySalaryTo: Int = 0
     var vacancySalaryFrom: Int = 0
+    var switchSalaryMain:Bool = true
 
     @IBOutlet weak var currientVacancySearch: UITextField!
     @IBAction func EditSearchButton(_ sender: Any) {
@@ -29,16 +31,18 @@ var vacancyArea = "2"
 
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-
+        request("http://jobag.vkzhuk.com/api/vacancies/all", method: .get).validate().responseJSON
+            { responseJSON in
+                
+                print(responseJSON)
+    }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
 
-        let vacancy = Vacancy(id: 1, name: self.vacancyName, area: vacancyArea, url: "https://hh.ru/vacancy/26725000", salaryTo: vacancySalaryTo, salaryFrom: vacancySalaryFrom, currency: "r")
-        self.vacancyList.append(vacancy)
         print("Жопа \(vacancyList)")
+        print("Жопа2 \(switchSalaryMain)")
         self.tableView.reloadData()
     }
 
@@ -81,6 +85,7 @@ var vacancyArea = "2"
         cell.vacancyNameCell.text = cellItem.name
         cell.vacancyAreaCell.text = cellItem.area
         return cell
+        
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -136,6 +141,7 @@ var vacancyArea = "2"
             dvc.vacancyEditArea = vacancyArea
             dvc.vacancyEditSalaryTo = vacancySalaryTo
             dvc.vacancyEditSalaryFrom = vacancySalaryFrom
+            dvc.SwitchSalary = switchSalaryMain
             dvc.delage = self
         }
 
@@ -145,7 +151,8 @@ var vacancyArea = "2"
       vacancyArea = info[1] as! String
         vacancySalaryTo = info[2] as! Int
         vacancySalaryFrom = info[3] as! Int
-        
+        switchSalaryMain = info[4] as! Bool
+ 
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         

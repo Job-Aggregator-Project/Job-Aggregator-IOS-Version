@@ -23,18 +23,17 @@ class EditViewController: UIViewController {
     
     var delage: EditViewControllerDelagate?
     
-    @IBAction func SwitchSalaryButton(_ sender: Any) {
-        
-        
-    }
+    @IBOutlet weak var SwitchButton: UISwitch!
+    
     @IBAction func SaveSearchEditButtno(_ sender: Any) {
         if let salaryMinInt = Int(EditVacancySalaryMin.text!), let salaryMaxInt = Int(EditVacancySalaryMax.text!) {
-            let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMinInt,salaryMaxInt]
+            if SwitchButton.isOn {SwitchSalary = true} else {SwitchSalary = false}
+            let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMinInt,salaryMaxInt,SwitchSalary]
             delage?.fillTheLablesWith(info: info)
             navigationController?.popViewController(animated: true)
+            }
         }
-        }
-        
+    
        
     
     @IBOutlet weak var EditVacancyName: UITextField!
@@ -61,6 +60,10 @@ class EditViewController: UIViewController {
          EditVacancyCity.text = vacancyEditArea
          EditVacancySalaryMax.text = "\(vacancyEditSalaryFrom)"
          EditVacancySalaryMin.text = "\(vacancyEditSalaryTo)"
+        if SwitchSalary == true{
+            SwitchButton.setOn(true, animated:false)
+        } else { SwitchButton.setOn(false, animated:false)
+}
     }
     /*
     // MARK: - Navigation
