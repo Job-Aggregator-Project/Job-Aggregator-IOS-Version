@@ -12,11 +12,11 @@ import SwiftyJSON
 
 
 
-class TableViewController: UITableViewController,EditViewControllerDelagate {
+class TableViewController: UITableViewController,EditViewControllerDelagate,UITextFieldDelegate {
 
 var vacancyList = Array<Vacancy>()
-var vacancyName = "1"
-var vacancyArea = "2"
+var vacancyName = ""
+var vacancyArea = ""
     var vacancySalaryTo: Int = 0
     var vacancySalaryFrom: Int = 0
     var switchSalaryMain:Bool = true
@@ -29,7 +29,7 @@ var vacancyArea = "2"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        currientVacancySearch.delegate = self
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -37,6 +37,8 @@ var vacancyArea = "2"
         super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
         fetchJSON(SearchPage: 1)
+       
+        
         self.tableView.reloadData()
     }
 
@@ -138,10 +140,14 @@ var vacancyArea = "2"
         switchSalaryMain = info[4] as! Bool
  
     }
-    @objc func textFieldDidChange(_ textField: UITextField) {
+
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        vacancyList.removeAll()
+        vacancyName = currientVacancySearch.text!
+        fetchJSON(SearchPage: 1)
         
     }
-   
     
     
     func fetchJSON (SearchPage:Int) {
@@ -157,7 +163,6 @@ var vacancyArea = "2"
                                                     url: json["data",i,"url"].string!,
                                                     salaryTo: json["data",i,"salaryTo"].intValue,
                                                     salaryFrom: json["data",i,"salaryFrom"].intValue))
-                    print(json["data",i,"salaryFrom"].intValue)
                 }
                 self.tableView.reloadData()
         }
