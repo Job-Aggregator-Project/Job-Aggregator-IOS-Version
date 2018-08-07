@@ -21,7 +21,7 @@ var vacancyArea = ""
     var vacancySalaryFrom: Int = 0
     var switchSalaryMain:Bool = true
     var SearchPage = 1
-
+var maxPage = 0
     @IBOutlet weak var currientVacancySearch: UITextField!
     @IBAction func EditSearchButton(_ sender: Any) {
            performSegue(withIdentifier: "editSearchSegue", sender: self)
@@ -77,10 +77,10 @@ var vacancyArea = ""
         let lastitem = vacancyList.count - 1
         if indexPath.row == lastitem {
             self.SearchPage = SearchPage + 1
-            fetchJSON(SearchPage: SearchPage)
-        }
+            if  self.SearchPage < self.maxPage { fetchJSON(SearchPage: SearchPage)
+            } else {return}
     }
-    
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "vacancyCell", for: indexPath) as! VacancyTableViewCell
         let cellItem = vacancyList[indexPath.row]
@@ -151,11 +151,14 @@ var vacancyArea = ""
     
     
     func fetchJSON (SearchPage:Int) {
-        let search = ["name" : vacancyName, "area" : vacancyArea, "page" : SearchPage] as [String : Any]
+       let search = ["name" : vacancyName, "area" : vacancyArea, "page" : SearchPage] as [String : Any]
+         let queue = DispatchQueue.global(qos: .utility)
+         queue.async {
         request("http://jobag.vkzhuk.com/api/vacancies/", method: .get, parameters: search).validate().responseJSON
             { response in
                 let json = JSON(response.value as Any)
                 let count = json["data"].count
+                self.maxPage = json["last_page"].intValue
                 for i in 0..<count {
                     self.vacancyList.append(Vacancy(id: json["data",i,"id"].intValue,
                                                     name: json["data",i,"name"].string!,
@@ -166,5 +169,9 @@ var vacancyArea = ""
                 }
                 self.tableView.reloadData()
         }
-    }
+        }
+        DispatchQueue.main.async {
+            return
+        }
+}
 }
