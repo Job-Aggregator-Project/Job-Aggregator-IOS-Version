@@ -20,6 +20,7 @@ var vacancyArea = "2"
     var vacancySalaryTo: Int = 0
     var vacancySalaryFrom: Int = 0
     var switchSalaryMain:Bool = true
+    var firstSearchPage = 1
 
     @IBOutlet weak var currientVacancySearch: UITextField!
     @IBAction func EditSearchButton(_ sender: Any) {
@@ -31,18 +32,11 @@ var vacancyArea = "2"
 
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        request("http://jobag.vkzhuk.com/api/vacancies/all", method: .get).validate().responseJSON
-            { responseJSON in
-                
-                print(responseJSON)
-    }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
-
-        print("Жопа \(vacancyList)")
-        print("Жопа2 \(switchSalaryMain)")
+        fetchJSON()
         self.tableView.reloadData()
     }
 
@@ -84,6 +78,25 @@ var vacancyArea = "2"
         let cellItem = vacancyList[indexPath.row]
         cell.vacancyNameCell.text = cellItem.name
         cell.vacancyAreaCell.text = cellItem.area
+        if cellItem.salaryFrom == "0" && cellItem.salaryTo == "0" && cellItem.currency == "null" {
+            cell.vacancyMinCell.text = "Не указана"
+            cell.vacancyMaxCell.alpha = 0
+            cell.currentLable.alpha = 0
+        } else {
+            if cellItem.salaryFrom != "0" {
+                cell.vacancyMinCell.text = "От \(cellItem.salaryFrom)"
+            } else {
+                cell.vacancyMinCell.alpha = 0
+            }
+            if cellItem.salaryTo != "0" {
+                cell.vacancyMaxCell.text = "  До \(cellItem.salaryTo)"
+            } else {
+                cell.vacancyMaxCell.alpha = 0
+            }
+            cell.currentLable.text = cellItem.currency
+        }
+    
+       
         return cell
         
     }
@@ -93,42 +106,6 @@ var vacancyArea = "2"
         vacancyList.removeAll()
     }
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToFirstSearchSegue" {
             let dvc = segue.destination as! FirstSearchViewController
@@ -156,5 +133,24 @@ var vacancyArea = "2"
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         
+    }
+    func fetchJSON () {
+        let search = ["name" : vacancyName, "area" : vacancyArea, "page" : firstSearchPage] as [String : Any]
+        request("http://jobag.vkzhuk.com/api/vacancies/", method: .get, parameters: search).validate().responseJSON
+            { response in
+                let json = JSON(response.value as Any)
+                let count = json["data"].count
+                for i in 0..<count {
+                    self.vacancyList.append(Vacancy(id: json["data",i,"id"].int!,
+                                                    name: json["data",i,"name"].string!,
+                                                    area: json["data",i,"area"].string!,
+                                                    url: json["data",i,"url"].string!,
+                                                    salaryTo: json["data",i,"salaryTo"].string!,
+                                                    salaryFrom: json["data",i,"salaryFrom"].string!,
+                                                    currency: json["data",i,"currency"].string!))
+                    print(self.vacancyList)
+                }
+                self.tableView.reloadData()
+        }
     }
 }
