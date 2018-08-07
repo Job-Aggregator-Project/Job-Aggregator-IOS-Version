@@ -20,7 +20,7 @@ var vacancyArea = "2"
     var vacancySalaryTo: Int = 0
     var vacancySalaryFrom: Int = 0
     var switchSalaryMain:Bool = true
-    var firstSearchPage = 1
+    var SearchPage = 1
 
     @IBOutlet weak var currientVacancySearch: UITextField!
     @IBAction func EditSearchButton(_ sender: Any) {
@@ -36,7 +36,7 @@ var vacancyArea = "2"
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
-        fetchJSON()
+        fetchJSON(SearchPage: 1)
         self.tableView.reloadData()
     }
 
@@ -53,7 +53,6 @@ var vacancyArea = "2"
     
    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return vacancyList.count
     }
 
@@ -72,6 +71,13 @@ var vacancyArea = "2"
         }
     }
 }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastitem = vacancyList.count - 1
+        if indexPath.row == lastitem {
+            self.SearchPage = SearchPage + 1
+            fetchJSON(SearchPage: SearchPage)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "vacancyCell", for: indexPath) as! VacancyTableViewCell
@@ -92,19 +98,17 @@ var vacancyArea = "2"
             } else {
                 cell.vacancyMaxCell.alpha = 0
             }
-       
-        }
-    
-       
+            }
         return cell
-        
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         vacancyList.removeAll()
     }
-
+    
+    // segues
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToFirstSearchSegue" {
             let dvc = segue.destination as! FirstSearchViewController
@@ -140,8 +144,8 @@ var vacancyArea = "2"
    
     
     
-    func fetchJSON () {
-        let search = ["name" : vacancyName, "area" : vacancyArea, "page" : firstSearchPage] as [String : Any]
+    func fetchJSON (SearchPage:Int) {
+        let search = ["name" : vacancyName, "area" : vacancyArea, "page" : SearchPage] as [String : Any]
         request("http://jobag.vkzhuk.com/api/vacancies/", method: .get, parameters: search).validate().responseJSON
             { response in
                 let json = JSON(response.value as Any)
