@@ -78,22 +78,21 @@ var vacancyArea = "2"
         let cellItem = vacancyList[indexPath.row]
         cell.vacancyNameCell.text = cellItem.name
         cell.vacancyAreaCell.text = cellItem.area
-        if cellItem.salaryFrom == "0" && cellItem.salaryTo == "0" && cellItem.currency == "null" {
+        if cellItem.salaryFrom == 0 && cellItem.salaryTo == 0  {
             cell.vacancyMinCell.text = "Не указана"
             cell.vacancyMaxCell.alpha = 0
-            cell.currentLable.alpha = 0
         } else {
-            if cellItem.salaryFrom != "0" {
+            if cellItem.salaryFrom != 0 {
                 cell.vacancyMinCell.text = "От \(cellItem.salaryFrom)"
             } else {
                 cell.vacancyMinCell.alpha = 0
             }
-            if cellItem.salaryTo != "0" {
+            if cellItem.salaryTo != 0 {
                 cell.vacancyMaxCell.text = "  До \(cellItem.salaryTo)"
             } else {
                 cell.vacancyMaxCell.alpha = 0
             }
-            cell.currentLable.text = cellItem.currency
+       
         }
     
        
@@ -123,6 +122,10 @@ var vacancyArea = "2"
         }
 
     }
+    
+
+    // delegate func
+    
     func fillTheLablesWith(info: Array<Any>) {
       vacancyName = info[0] as! String
       vacancyArea = info[1] as! String
@@ -134,6 +137,9 @@ var vacancyArea = "2"
     @objc func textFieldDidChange(_ textField: UITextField) {
         
     }
+   
+    
+    
     func fetchJSON () {
         let search = ["name" : vacancyName, "area" : vacancyArea, "page" : firstSearchPage] as [String : Any]
         request("http://jobag.vkzhuk.com/api/vacancies/", method: .get, parameters: search).validate().responseJSON
@@ -141,14 +147,13 @@ var vacancyArea = "2"
                 let json = JSON(response.value as Any)
                 let count = json["data"].count
                 for i in 0..<count {
-                    self.vacancyList.append(Vacancy(id: json["data",i,"id"].int!,
+                    self.vacancyList.append(Vacancy(id: json["data",i,"id"].intValue,
                                                     name: json["data",i,"name"].string!,
                                                     area: json["data",i,"area"].string!,
                                                     url: json["data",i,"url"].string!,
-                                                    salaryTo: json["data",i,"salaryTo"].string!,
-                                                    salaryFrom: json["data",i,"salaryFrom"].string!,
-                                                    currency: json["data",i,"currency"].string!))
-                    print(self.vacancyList)
+                                                    salaryTo: json["data",i,"salaryTo"].intValue,
+                                                    salaryFrom: json["data",i,"salaryFrom"].intValue))
+                    print(json["data",i,"salaryFrom"].intValue)
                 }
                 self.tableView.reloadData()
         }
