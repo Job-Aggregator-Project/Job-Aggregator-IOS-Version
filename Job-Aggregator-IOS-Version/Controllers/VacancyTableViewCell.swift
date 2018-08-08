@@ -14,8 +14,8 @@ class VacancyTableViewCell: UITableViewCell {
     @IBOutlet weak var vacancyAreaCell: UILabel!
     @IBOutlet weak var vacancyMinCell: UILabel!
     @IBOutlet weak var vacancyMaxCell: UILabel!
-    @IBOutlet weak var vacancyCurrencyCell: UILabel!
-    @IBOutlet weak var currentLable: UILabel!
+
+
     
     
     

@@ -17,19 +17,20 @@ protocol EditViewControllerDelagate {
 class EditViewController: UIViewController {
     var vacancyEditName = ""
     var vacancyEditArea = ""
-    var vacancyEditSalaryTo:Int = 0
-    var vacancyEditSalaryFrom: Int = 0
+    var vacancyEditSalaryTo:Double = 0
+    var vacancyEditSalaryFrom: Double = 0
     var SwitchSalary:Bool = true
     
     var delage: EditViewControllerDelagate?
     
     
     @IBAction func SaveSearchEditButtno(_ sender: Any) {
-        if let salaryMinInt = Int(EditVacancySalaryMin.text!), let salaryMaxInt = Int(EditVacancySalaryMax.text!) {
+        if let salaryMinInt = Double(EditVacancySalaryMin.text!), let salaryMaxInt = Double(EditVacancySalaryMax.text!) {
             let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMinInt,salaryMaxInt,SwitchSalary]
             delage?.fillTheLablesWith(info: info)
             navigationController?.popViewController(animated: true)
             }
+        
         }
     
        

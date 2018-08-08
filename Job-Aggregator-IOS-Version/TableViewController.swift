@@ -15,13 +15,17 @@ import SwiftyJSON
 class TableViewController: UITableViewController,EditViewControllerDelagate,UITextFieldDelegate {
 
 var vacancyList = Array<Vacancy>()
+var vacancyListAfterSearch = Array<Vacancy>()
+
 var vacancyName = ""
 var vacancyArea = ""
-    var vacancySalaryTo: Int = 0
-    var vacancySalaryFrom: Int = 0
+    var vacancySalaryTo: Double = 0
+    var vacancySalaryFrom: Double = 0
     var switchSalaryMain:Bool = true
     var SearchPage = 1
-var maxPage = 0
+    var maxPage = 0
+    
+    
     @IBOutlet weak var currientVacancySearch: UITextField!
     @IBAction func EditSearchButton(_ sender: Any) {
            performSegue(withIdentifier: "editSearchSegue", sender: self)
@@ -37,12 +41,8 @@ var maxPage = 0
         super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
         fetchJSON(SearchPage: 1)
-        vacancyList.filter({(Vacancy) in
-            return Bool(Vacancy.salaryFrom  < vacancySalaryTo)
-        })
-       
         print(switchSalaryMain)
-        self.tableView.reloadData()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,7 +77,7 @@ var maxPage = 0
     }
 }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastitem = vacancyList.count - 1
+        let lastitem = vacancyList.count - 3
         if indexPath.row == lastitem {
             self.SearchPage = SearchPage + 1
             if  self.SearchPage < self.maxPage { fetchJSON(SearchPage: SearchPage)
@@ -94,12 +94,12 @@ var maxPage = 0
             cell.vacancyMaxCell.alpha = 0
         } else {
             if cellItem.salaryFrom != 0 {
-                cell.vacancyMinCell.text = "От \(cellItem.salaryFrom)"
+                cell.vacancyMinCell.text = "От \(NSString(format: "%.0f", cellItem.salaryFrom))"
             } else {
                 cell.vacancyMinCell.alpha = 0
             }
             if cellItem.salaryTo != 0 {
-                cell.vacancyMaxCell.text = "  До \(cellItem.salaryTo)"
+                cell.vacancyMaxCell.text = "  До \(NSString(format: "%.0f", cellItem.salaryTo))"
             } else {
                 cell.vacancyMaxCell.alpha = 0
             }
@@ -138,8 +138,8 @@ var maxPage = 0
     func fillTheLablesWith(info: Array<Any>) {
       vacancyName = info[0] as! String
       vacancyArea = info[1] as! String
-        vacancySalaryTo = info[2] as! Int
-        vacancySalaryFrom = info[3] as! Int
+        vacancySalaryTo = info[2] as! Double
+        vacancySalaryFrom = info[3] as! Double
         switchSalaryMain = info[4] as! Bool
  
     }
@@ -168,14 +168,41 @@ var maxPage = 0
                                                     name: json["data",i,"name"].string!,
                                                     area: json["data",i,"area"].string!,
                                                     url: json["data",i,"url"].string!,
-                                                    salaryTo: json["data",i,"salaryTo"].intValue,
-                                                    salaryFrom: json["data",i,"salaryFrom"].intValue))
+                                                    salaryTo: json["data",i,"salaryTo"].doubleValue,
+                                                    salaryFrom: json["data",i,"salaryFrom"].doubleValue))
                 }
+                 self.sortArray()
+                print(self.vacancyList)
                 self.tableView.reloadData()
-        }
+                
+            }
         }
         DispatchQueue.main.async {
             return
         }
+    }
+    
+  
+    
+    func sortArray () {
+
+        
+        if switchSalaryMain == false {
+            self.vacancyList = self.vacancyList.filter{$0.salaryFrom == 0 && $0.salaryTo == 0}
+        } else {
+        if switchSalaryMain == true && vacancySalaryTo != 0 {    self.vacancyList = self.vacancyList.filter{$0.salaryFrom > vacancySalaryFrom
+            &&  $0.salaryTo < vacancySalaryTo}
+            
+        }
+        else {
+            self.vacancyList = self.vacancyList.filter{$0.salaryFrom > vacancySalaryFrom}
+            }
+        }
+
+    }
 }
-}
+
+
+
+
+
