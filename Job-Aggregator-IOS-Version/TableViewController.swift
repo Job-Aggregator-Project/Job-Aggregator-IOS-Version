@@ -37,8 +37,11 @@ var maxPage = 0
         super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
         fetchJSON(SearchPage: 1)
+        vacancyList.filter({(Vacancy) in
+            return Bool(Vacancy.salaryFrom  < vacancySalaryTo)
+        })
        
-        
+        print(switchSalaryMain)
         self.tableView.reloadData()
     }
 
@@ -148,6 +151,7 @@ var maxPage = 0
         fetchJSON(SearchPage: 1)
         
     }
+    
     
     
     func fetchJSON (SearchPage:Int) {

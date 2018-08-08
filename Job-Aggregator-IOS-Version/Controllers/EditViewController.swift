@@ -23,11 +23,9 @@ class EditViewController: UIViewController {
     
     var delage: EditViewControllerDelagate?
     
-    @IBOutlet weak var SwitchButton: UISwitch!
     
     @IBAction func SaveSearchEditButtno(_ sender: Any) {
         if let salaryMinInt = Int(EditVacancySalaryMin.text!), let salaryMaxInt = Int(EditVacancySalaryMax.text!) {
-            if SwitchButton.isOn {SwitchSalary = true} else {SwitchSalary = false}
             let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMinInt,salaryMaxInt,SwitchSalary]
             delage?.fillTheLablesWith(info: info)
             navigationController?.popViewController(animated: true)
@@ -48,7 +46,21 @@ class EditViewController: UIViewController {
         EditVacancySalaryMin.keyboardType = UIKeyboardType.numberPad
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func swiftchButton(_ sender: Any) {
+        if  SwitchSalary == true {
+            SwitchSalary = false
+            EditVacancySalaryMin.isEnabled = false
+            EditVacancySalaryMax.isEnabled = false
+          } else {
+            SwitchSalary = true
+            EditVacancySalaryMin.isEnabled = true
+            EditVacancySalaryMax.isEnabled = true
+        }
+       reloadInputViews()
+    }
+    
+    
+    @IBOutlet weak var SwitchButton: UISwitch!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,12 +68,12 @@ class EditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        EditVacancyName.text = vacancyEditName
+         EditVacancyName.text = vacancyEditName
          EditVacancyCity.text = vacancyEditArea
          EditVacancySalaryMax.text = "\(vacancyEditSalaryFrom)"
          EditVacancySalaryMin.text = "\(vacancyEditSalaryTo)"
         if SwitchSalary == true{
-            SwitchButton.setOn(true, animated:false)
+            SwitchButton.setOn (true, animated:false)
         } else { SwitchButton.setOn(false, animated:false)
 }
     }
