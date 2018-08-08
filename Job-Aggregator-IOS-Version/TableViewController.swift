@@ -41,7 +41,6 @@ var vacancyArea = ""
         super.viewWillAppear(true)
         currientVacancySearch.text = vacancyName
         fetchJSON(SearchPage: 1)
-        print(switchSalaryMain)
 
     }
 
@@ -79,6 +78,7 @@ var vacancyArea = ""
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastitem = vacancyList.count - 1
         if indexPath.row == lastitem {
+            
             self.SearchPage = SearchPage + 1
             if  self.SearchPage < self.maxPage { fetchJSON(SearchPage: SearchPage)
             } else {return}
@@ -98,12 +98,12 @@ var vacancyArea = ""
             } else {
                 cell.vacancyMinCell.alpha = 0
             }
-            if cellItem.salaryTo != 0 {
+ //           if cellItem.salaryTo != 0 {
                 cell.vacancyMaxCell.text = "  До \(NSString(format: "%.0f", cellItem.salaryTo))"
-        } else {
-              cell.vacancyMaxCell.alpha = 0
+//        } else {
+//              cell.vacancyMaxCell.alpha = 0
 
-            }
+//            }
              }
         return cell
     }
@@ -111,6 +111,7 @@ var vacancyArea = ""
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         vacancyList.removeAll()
+        self.SearchPage = 0
         
     }
     
@@ -154,19 +155,21 @@ var vacancyArea = ""
         fetchJSON(SearchPage: 1)
         self.vacancySalaryTo = 0
         self.vacancySalaryFrom = 0
+        self.SearchPage = 0
 
     }
     
     
     
     func fetchJSON (SearchPage:Int) {
-       let search = ["name" : vacancyName, "area" : vacancyArea, "page" : SearchPage] as [String : Any]
+        let search = ["name" : vacancyName, "area" : vacancyArea, "page" : SearchPage, "description" : "description"] as [String : Any]
          let queue = DispatchQueue.global(qos: .utility)
          queue.async {
         request("http://jobag.vkzhuk.com/api/vacancies/", method: .get, parameters: search).validate().responseJSON
             { response in
                 let json = JSON(response.value as Any)
                 let count = json["data"].count
+                print(json)
                 self.maxPage = json["last_page"].intValue
                 for i in 0..<count {
                     self.vacancyList.append(Vacancy(id: json["data",i,"id"].intValue,

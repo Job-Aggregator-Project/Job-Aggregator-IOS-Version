@@ -118,39 +118,6 @@
             </objects>
             <point key="canvasLocation" x="1176.8" y="94.581280788177338"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="oi2-oK-JcJ">
-            <objects>
-                <viewController id="VIh-1J-8SS" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AcR-YJ-RMG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="naG-dm-K8L"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Ixo-zb-SXa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lGh-zE-ltU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="153" y="1501"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="dy2-BP-mfH">
-            <objects>
-                <tabBarController id="utH-2v-9Oc" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1QL-l6-Z8a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="VIh-1J-8SS" kind="relationship" relationship="viewControllers" id="3l5-Ka-d3k"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B0K-iw-iOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1211" y="1844"/>
-        </scene>
         <!--Item-->
         <scene sceneID="nOK-lO-mWs">
             <objects>

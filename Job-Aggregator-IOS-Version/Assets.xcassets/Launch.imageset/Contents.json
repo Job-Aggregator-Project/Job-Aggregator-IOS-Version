@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "logo-2.png",
+      "filename" : "Launge screen-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "logo-1.png",
+      "filename" : "Launge screenx2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "logo.png",
+      "filename" : "Launge screenx3.png",
       "scale" : "3x"
     }
   ],
