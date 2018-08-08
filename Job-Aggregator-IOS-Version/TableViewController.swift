@@ -15,7 +15,7 @@ import SwiftyJSON
 class TableViewController: UITableViewController,EditViewControllerDelagate,UITextFieldDelegate {
 
 var vacancyList = Array<Vacancy>()
-var vacancyListAfterSearch = Array<Vacancy>()
+
 
 var vacancyName = ""
 var vacancyArea = ""
@@ -98,18 +98,20 @@ var vacancyArea = ""
             } else {
                 cell.vacancyMinCell.alpha = 0
             }
-        //    if cellItem.salaryTo != 0 {
+            if cellItem.salaryTo != 0 {
                 cell.vacancyMaxCell.text = "  До \(NSString(format: "%.0f", cellItem.salaryTo))"
-          //  } else {
-            //    cell.vacancyMaxCell.alpha = 0
-           //}
+        } else {
+              cell.vacancyMaxCell.alpha = 0
+
             }
+             }
         return cell
     }
-
+   
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         vacancyList.removeAll()
+        
     }
     
     // segues
@@ -147,9 +149,12 @@ var vacancyArea = ""
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         vacancyList.removeAll()
+       
         vacancyName = currientVacancySearch.text!
         fetchJSON(SearchPage: 1)
-        
+        self.vacancySalaryTo = 0
+        self.vacancySalaryFrom = 0
+
     }
     
     
@@ -202,6 +207,7 @@ var vacancyArea = ""
         }
 
     }
+
 }
 
 
