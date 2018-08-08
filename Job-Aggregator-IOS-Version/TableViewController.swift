@@ -77,7 +77,7 @@ var vacancyArea = ""
     }
 }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastitem = vacancyList.count - 3
+        let lastitem = vacancyList.count - 1
         if indexPath.row == lastitem {
             self.SearchPage = SearchPage + 1
             if  self.SearchPage < self.maxPage { fetchJSON(SearchPage: SearchPage)
@@ -93,16 +93,16 @@ var vacancyArea = ""
             cell.vacancyMinCell.text = "Не указана"
             cell.vacancyMaxCell.alpha = 0
         } else {
-            if cellItem.salaryFrom != 0 {
+              if cellItem.salaryFrom != 0  {
                 cell.vacancyMinCell.text = "От \(NSString(format: "%.0f", cellItem.salaryFrom))"
             } else {
                 cell.vacancyMinCell.alpha = 0
             }
-            if cellItem.salaryTo != 0 {
+        //    if cellItem.salaryTo != 0 {
                 cell.vacancyMaxCell.text = "  До \(NSString(format: "%.0f", cellItem.salaryTo))"
-            } else {
-                cell.vacancyMaxCell.alpha = 0
-            }
+          //  } else {
+            //    cell.vacancyMaxCell.alpha = 0
+           //}
             }
         return cell
     }
@@ -168,13 +168,15 @@ var vacancyArea = ""
                                                     name: json["data",i,"name"].string!,
                                                     area: json["data",i,"area"].string!,
                                                     url: json["data",i,"url"].string!,
-                                                    salaryTo: json["data",i,"salaryTo"].doubleValue,
-                                                    salaryFrom: json["data",i,"salaryFrom"].doubleValue))
+                                                    salaryFrom: json["data",i,"salaryFrom"].doubleValue,
+                                                    salaryTo: json["data",i,"salaryTo"].doubleValue))
                 }
-                 self.sortArray()
+            
                 print(self.vacancyList)
                 self.tableView.reloadData()
-                
+                 self.sortArray()
+                self.tableView.reloadData()
+                print(self.vacancySalaryFrom,self.vacancySalaryTo)
             }
         }
         DispatchQueue.main.async {
@@ -188,10 +190,10 @@ var vacancyArea = ""
 
         
         if switchSalaryMain == false {
-            self.vacancyList = self.vacancyList.filter{$0.salaryFrom == 0 && $0.salaryTo == 0}
+                return
         } else {
-        if switchSalaryMain == true && vacancySalaryTo != 0 {    self.vacancyList = self.vacancyList.filter{$0.salaryFrom > vacancySalaryFrom
-            &&  $0.salaryTo < vacancySalaryTo}
+        if switchSalaryMain == true && vacancySalaryTo != 0 {    self.vacancyList = self.vacancyList.filter{$0.salaryFrom >= vacancySalaryFrom
+            &&  $0.salaryTo <= vacancySalaryTo && $0.salaryFrom < $0.salaryTo }
             
         }
         else {

@@ -26,7 +26,7 @@ class EditViewController: UIViewController {
     
     @IBAction func SaveSearchEditButtno(_ sender: Any) {
         if let salaryMinInt = Double(EditVacancySalaryMin.text!), let salaryMaxInt = Double(EditVacancySalaryMax.text!) {
-            let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMinInt,salaryMaxInt,SwitchSalary]
+            let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMaxInt,salaryMinInt,SwitchSalary]
             delage?.fillTheLablesWith(info: info)
             navigationController?.popViewController(animated: true)
             }
@@ -44,7 +44,7 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         EditVacancySalaryMin.keyboardType = UIKeyboardType.numberPad
-        EditVacancySalaryMin.keyboardType = UIKeyboardType.numberPad
+        EditVacancySalaryMax.keyboardType = UIKeyboardType.numberPad
         // Do any additional setup after loading the view.
     }
     @IBAction func swiftchButton(_ sender: Any) {
@@ -71,8 +71,8 @@ class EditViewController: UIViewController {
         super.viewWillAppear(true)
          EditVacancyName.text = vacancyEditName
          EditVacancyCity.text = vacancyEditArea
-         EditVacancySalaryMax.text = "\(vacancyEditSalaryFrom)"
-         EditVacancySalaryMin.text = "\(vacancyEditSalaryTo)"
+         EditVacancySalaryMin.text = "\(vacancyEditSalaryFrom)"
+         EditVacancySalaryMax.text = "\(vacancyEditSalaryTo)"
         if SwitchSalary == true{
             SwitchButton.setOn (true, animated:false)
         } else { SwitchButton.setOn(false, animated:false)
