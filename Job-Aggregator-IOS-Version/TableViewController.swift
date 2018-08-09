@@ -102,12 +102,12 @@ var vacancyArea = ""
             } else {
                 cell.vacancyMinCell.alpha = 0
             }
-            if cellItem.salaryTo != 0 {
+         //   if cellItem.salaryTo != 0 {
                 cell.vacancyMaxCell.text = "До \(NSString(format: "%.0f", cellItem.salaryTo))"
-      } else {
-              cell.vacancyMaxCell.alpha = 0
+    //  } else {
+       //       cell.vacancyMaxCell.alpha = 0
 
-            }
+        //    }
              }
         return cell
     }
