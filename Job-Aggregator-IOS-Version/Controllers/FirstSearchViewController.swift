@@ -9,9 +9,11 @@
 import UIKit
 
 class FirstSearchViewController: UIViewController {
+   
+    
     var firstSearchVacancyName = ""
     var firstSearchvacancyArea = ""
- //   let nameImage = UIImage(named: #imageLiteral(resourceName: "city"))
+
     let cityImage = UIImage(named: "city.png")
     let galstImage = UIImage(named: "galst.png")
     let sizeСityImage = CGRect( x: 10.0, y: -3.0, width: 21, height: 26)
@@ -41,8 +43,10 @@ class FirstSearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         vacancyNameSearchText.text = firstSearchVacancyName
         vacancyCitySearchText.text = firstSearchvacancyArea
+        print(firstSearchVacancyName, firstSearchvacancyArea)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +77,9 @@ class FirstSearchViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        vacancyNameSearchText.alpha = 0
+
         
     }
+
 }
+

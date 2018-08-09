@@ -15,13 +15,14 @@ struct Vacancy {
     var url: String
     var salaryFrom: Double
     var salaryTo: Double
- 
-
+    var employer: String
+    var experience:String
+    var description:String
     
 
   
     
-    init (id: Int, name:String, area:String, url:String,salaryFrom: Double,salaryTo:Double) {
+    init (id: Int, name:String, area:String, url:String,salaryFrom: Double,salaryTo:Double, employer:String, experience:String,description:String) {
         
         self.id = id
         self.name = name
@@ -29,8 +30,8 @@ struct Vacancy {
         self.url = url
         self.salaryTo = salaryTo
         self.salaryFrom = salaryFrom
-
-       
-        
+        self.employer = employer
+        self.experience = experience
+        self.description = description
     }
 }

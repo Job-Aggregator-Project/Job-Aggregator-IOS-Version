@@ -13,7 +13,7 @@ import SwiftyJSON
 
 
 class TableViewController: UITableViewController,EditViewControllerDelagate,UITextFieldDelegate {
- var delage: FirstSearchViewControllerDelagate?
+
 var vacancyList = Array<Vacancy>()
 
 
@@ -26,6 +26,7 @@ var vacancyArea = ""
     var maxPage = 0
     
     
+
     @IBOutlet weak var currientVacancySearch: UITextField!
     @IBAction func EditSearchButton(_ sender: Any) {
            performSegue(withIdentifier: "editSearchSegue", sender: self)
@@ -36,11 +37,12 @@ var vacancyArea = ""
         currientVacancySearch.delegate = self
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+        
     
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-       
+
         currientVacancySearch.text = vacancyName
         fetchJSON(SearchPage: 1)
 
@@ -100,12 +102,12 @@ var vacancyArea = ""
             } else {
                 cell.vacancyMinCell.alpha = 0
             }
- //           if cellItem.salaryTo != 0 {
-                cell.vacancyMaxCell.text = "  До \(NSString(format: "%.0f", cellItem.salaryTo))"
-//        } else {
-//              cell.vacancyMaxCell.alpha = 0
+            if cellItem.salaryTo != 0 {
+                cell.vacancyMaxCell.text = "До \(NSString(format: "%.0f", cellItem.salaryTo))"
+      } else {
+              cell.vacancyMaxCell.alpha = 0
 
-//            }
+            }
              }
         return cell
     }
@@ -126,7 +128,7 @@ var vacancyArea = ""
             dvc.firstSearchvacancyArea = vacancyArea
         }
         if segue.identifier == "editSearchSegue" {
-            let dvc = segue.destination as! EditViewController
+            let dvc = segue.destination as! EditTableViewController
             dvc.vacancyEditName = vacancyName
             dvc.vacancyEditArea = vacancyArea
             dvc.vacancyEditSalaryTo = vacancySalaryTo
@@ -136,6 +138,8 @@ var vacancyArea = ""
         }
 
     }
+    
+    
     
 
     // delegate func
@@ -164,7 +168,7 @@ var vacancyArea = ""
     
     
     func fetchJSON (SearchPage:Int) {
-        let search = ["name" : vacancyName, "area" : vacancyArea, "page" : SearchPage, "description" : "description"] as [String : Any]
+        let search = ["name" : vacancyName, "area" : vacancyArea, "page" : SearchPage] as [String : Any]
          let queue = DispatchQueue.global(qos: .utility)
          queue.async {
         request("http://jobag.vkzhuk.com/api/vacancies/", method: .get, parameters: search).validate().responseJSON
@@ -179,14 +183,16 @@ var vacancyArea = ""
                                                     area: json["data",i,"area"].string!,
                                                     url: json["data",i,"url"].string!,
                                                     salaryFrom: json["data",i,"salaryFrom"].doubleValue,
-                                                    salaryTo: json["data",i,"salaryTo"].doubleValue))
+                                                    salaryTo: json["data",i,"salaryTo"].doubleValue,
+                                                    employer: json["data",i,"salaryTo"].string!,
+                                                    experience: json["data",i,"experience"].string!,
+                                                    description: json["data",i,"description"].string!))
                 }
             
                 print(self.vacancyList)
                 self.tableView.reloadData()
                  self.sortArray()
                 self.tableView.reloadData()
-                print(self.vacancySalaryFrom,self.vacancySalaryTo)
             }
         }
         DispatchQueue.main.async {
@@ -212,9 +218,6 @@ var vacancyArea = ""
 
 }
 
-protocol FirstSearchViewControllerDelagate {
-    func fillTheLablesWith(info:Array<Any>)
-}
 
 
 

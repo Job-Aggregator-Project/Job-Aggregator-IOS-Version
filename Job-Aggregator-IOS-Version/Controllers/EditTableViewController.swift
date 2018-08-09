@@ -1,8 +1,8 @@
 //
-//  EditViewController.swift
+//  EditTableViewController.swift
 //  Job-Aggregator-IOS-Version
 //
-//  Created by Александр Сахнюков on 04/08/2018.
+//  Created by Александр Сахнюков on 09/08/2018.
 //  Copyright © 2018 Александр Сахнюков. All rights reserved.
 //
 
@@ -12,28 +12,27 @@ protocol EditViewControllerDelagate {
     func fillTheLablesWith(info:Array<Any>)
 }
 
+class EditTableViewController: UITableViewController {
 
-
-class EditViewController: UIViewController {
+    
     var vacancyEditName = ""
     var vacancyEditArea = ""
     var vacancyEditSalaryTo:Double = 0
     var vacancyEditSalaryFrom: Double = 0
     var SwitchSalary:Bool = true
-    
+ 
     var delage: EditViewControllerDelagate?
-    
     
     @IBAction func SaveSearchEditButtno(_ sender: Any) {
         if let salaryMinInt = Double(EditVacancySalaryMin.text!), let salaryMaxInt = Double(EditVacancySalaryMax.text!) {
             let info:[Any] = [EditVacancyName.text!,EditVacancyCity.text!,salaryMaxInt,salaryMinInt,SwitchSalary]
             delage?.fillTheLablesWith(info: info)
             navigationController?.popViewController(animated: true)
-            }
-        
         }
+        
+    }
     
-       
+    
     
     @IBOutlet weak var EditVacancyName: UITextField!
     @IBOutlet weak var EditVacancyCity: UITextField!
@@ -45,47 +44,51 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
         EditVacancySalaryMin.keyboardType = UIKeyboardType.numberPad
         EditVacancySalaryMax.keyboardType = UIKeyboardType.numberPad
-        // Do any additional setup after loading the view.
     }
+      @IBOutlet weak var SwitchButton: UISwitch!
+    
     @IBAction func swiftchButton(_ sender: Any) {
         if  SwitchSalary == true {
             SwitchSalary = false
             EditVacancySalaryMin.isEnabled = false
             EditVacancySalaryMax.isEnabled = false
-          } else {
+        } else {
             SwitchSalary = true
             EditVacancySalaryMin.isEnabled = true
             EditVacancySalaryMax.isEnabled = true
         }
-       reloadInputViews()
+        reloadInputViews()
     }
-    
-    
-    @IBOutlet weak var SwitchButton: UISwitch!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        EditVacancyName.text = vacancyEditName
+        EditVacancyCity.text = vacancyEditArea
+        EditVacancySalaryMin.text = "\(vacancyEditSalaryFrom)"
+        EditVacancySalaryMax.text = "\(vacancyEditSalaryTo)"
+        if SwitchSalary == true{
+            SwitchButton.setOn (true, animated:false)
+        } else { SwitchButton.setOn(false, animated:false)
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-         EditVacancyName.text = vacancyEditName
-         EditVacancyCity.text = vacancyEditArea
-         EditVacancySalaryMin.text = "\(vacancyEditSalaryFrom)"
-         EditVacancySalaryMax.text = "\(vacancyEditSalaryTo)"
-        if SwitchSalary == true{
-            SwitchButton.setOn (true, animated:false)
-        } else { SwitchButton.setOn(false, animated:false)
-}
-    }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
-    */
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 4
+    }
+
+   
 
 }
