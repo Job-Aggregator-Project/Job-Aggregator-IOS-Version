@@ -74,6 +74,6 @@ class FirstSearchViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         vacancyNameSearchText.alpha = 0
-        self.view.alpha = 0
+        
     }
 }

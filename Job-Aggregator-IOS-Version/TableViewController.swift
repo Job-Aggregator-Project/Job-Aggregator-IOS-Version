@@ -13,7 +13,7 @@ import SwiftyJSON
 
 
 class TableViewController: UITableViewController,EditViewControllerDelagate,UITextFieldDelegate {
-
+ var delage: FirstSearchViewControllerDelagate?
 var vacancyList = Array<Vacancy>()
 
 
@@ -197,15 +197,12 @@ var vacancyArea = ""
   
     
     func sortArray () {
-
-        
         if switchSalaryMain == false {
                 return
         } else {
         if switchSalaryMain == true && vacancySalaryTo != 0 {    self.vacancyList = self.vacancyList.filter{$0.salaryFrom >= vacancySalaryFrom
             &&  $0.salaryTo <= vacancySalaryTo && $0.salaryFrom < $0.salaryTo }
-            
-        }
+            }
         else {
             self.vacancyList = self.vacancyList.filter{$0.salaryFrom > vacancySalaryFrom}
             }
@@ -215,6 +212,9 @@ var vacancyArea = ""
 
 }
 
+protocol FirstSearchViewControllerDelagate {
+    func fillTheLablesWith(info:Array<Any>)
+}
 
 
 
