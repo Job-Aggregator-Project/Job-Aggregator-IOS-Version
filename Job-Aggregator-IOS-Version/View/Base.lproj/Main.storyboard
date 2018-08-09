@@ -126,6 +126,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VhJ-Aj-g3S">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hvS-tL-NYm">
                         <autoresizingMask key="autoresizingMask"/>
@@ -192,7 +193,7 @@
                     <connections>
                         <outlet property="vacancyCitySearchText" destination="6s1-og-aOy" id="1Td-cy-ogq"/>
                         <outlet property="vacancyNameSearchText" destination="zJb-Wd-D5f" id="v4K-5M-cbX"/>
-                        <segue destination="ZfJ-Nu-KaW" kind="show" identifier="firstSearchSegue" id="on1-VH-89A"/>
+                        <segue destination="ZfJ-Nu-KaW" kind="showDetail" identifier="firstSearchSegue" id="on1-VH-89A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ng-sK-QAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,7 +207,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="03R-jh-PbU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40315361719999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vacancyCell" rowHeight="102" id="Wfn-nG-2UN" customClass="VacancyTableViewCell" customModule="Job_Aggregator_IOS_Version" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="102"/>
@@ -263,6 +264,7 @@
                                         <constraint firstItem="QDc-lP-8Jt" firstAttribute="top" secondItem="sA1-xz-T9J" secondAttribute="bottom" constant="8" id="wn6-Jx-k5e"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="vacancyAreaCell" destination="sA1-xz-T9J" id="B22-Lt-UGw"/>
                                     <outlet property="vacancyMaxCell" destination="V2s-bR-sa5" id="Og1-Zo-Bum"/>

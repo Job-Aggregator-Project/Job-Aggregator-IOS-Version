@@ -36,9 +36,11 @@ var vacancyArea = ""
         currientVacancySearch.delegate = self
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+       
         currientVacancySearch.text = vacancyName
         fetchJSON(SearchPage: 1)
 

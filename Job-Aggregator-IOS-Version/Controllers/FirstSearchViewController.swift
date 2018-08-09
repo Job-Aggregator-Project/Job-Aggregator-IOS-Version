@@ -14,8 +14,8 @@ class FirstSearchViewController: UIViewController {
  //   let nameImage = UIImage(named: #imageLiteral(resourceName: "city"))
     let cityImage = UIImage(named: "city.png")
     let galstImage = UIImage(named: "galst.png")
-    let sizeСityImage = CGRect( x: 10.0, y: 0.0, width: image.size.width, height: image.size.height)
-    let sizeGalstImage = CGRect( x: 10.0, y: 0.0, width: image.size.width, height: image.size.height)
+    let sizeСityImage = CGRect( x: 10.0, y: -3.0, width: 21, height: 26)
+    let sizeGalstImage = CGRect( x: 15.0, y: -7.0, width: 11, height: 34)
     
     @IBOutlet weak var vacancyNameSearchText: UITextField!
     @IBOutlet weak var vacancyCitySearchText: UITextField!
@@ -31,8 +31,8 @@ class FirstSearchViewController: UIViewController {
         self.vacancyNameSearchText.frame.size.height = 50
         self.vacancyCitySearchText.frame.size.height = 50
 
-        addIcon(textField: vacancyCitySearchText, image: cityImage!, size: <#CGRect#>)
-        addIcon(textField: vacancyNameSearchText, image: galstImage!, size: <#CGRect#>)
+        addIcon(textField: vacancyCitySearchText, image: cityImage!, size: sizeСityImage)
+        addIcon(textField: vacancyNameSearchText, image: galstImage!, size: sizeGalstImage)
 
 
        
@@ -61,7 +61,7 @@ class FirstSearchViewController: UIViewController {
             }
         }
     func addIcon (textField : UITextField, image : UIImage, size:CGRect) {
-        let leftImageView =  UIImageView (frame: CGRect( x: 10.0, y: 0.0, width: image.size.width, height: image.size.height))
+        let leftImageView =  UIImageView (frame: size)
         let view = UIView (frame: CGRect(x: 0, y: 0, width: 35, height: 20))
        
         leftImageView.image = image
@@ -71,14 +71,9 @@ class FirstSearchViewController: UIViewController {
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        vacancyNameSearchText.alpha = 0
+        self.view.alpha = 0
     }
-    */
-
 }
