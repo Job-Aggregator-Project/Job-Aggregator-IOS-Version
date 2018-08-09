@@ -11,8 +11,12 @@ import UIKit
 class FirstSearchViewController: UIViewController {
     var firstSearchVacancyName = ""
     var firstSearchvacancyArea = ""
+ //   let nameImage = UIImage(named: #imageLiteral(resourceName: "city"))
+    let cityImage = UIImage(named: "city.png")
+    let galstImage = UIImage(named: "galst.png")
+    let sizeСityImage = CGRect( x: 10.0, y: 0.0, width: image.size.width, height: image.size.height)
+    let sizeGalstImage = CGRect( x: 10.0, y: 0.0, width: image.size.width, height: image.size.height)
     
-
     @IBOutlet weak var vacancyNameSearchText: UITextField!
     @IBOutlet weak var vacancyCitySearchText: UITextField!
     
@@ -23,7 +27,16 @@ class FirstSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+        self.vacancyNameSearchText.frame.size.height = 50
+        self.vacancyCitySearchText.frame.size.height = 50
 
+        addIcon(textField: vacancyCitySearchText, image: cityImage!, size: <#CGRect#>)
+        addIcon(textField: vacancyNameSearchText, image: galstImage!, size: <#CGRect#>)
+
+
+       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +60,17 @@ class FirstSearchViewController: UIViewController {
             dvc.vacancyArea = vacancyCitySearchText.text!
             }
         }
-}
+    func addIcon (textField : UITextField, image : UIImage, size:CGRect) {
+        let leftImageView =  UIImageView (frame: CGRect( x: 10.0, y: 0.0, width: image.size.width, height: image.size.height))
+        let view = UIView (frame: CGRect(x: 0, y: 0, width: 35, height: 20))
+       
+        leftImageView.image = image
+         view.addSubview(leftImageView)
+        textField.leftView = view
+        textField.leftViewMode = .always
+        
+    }
+
     /*
     // MARK: - Navigation
 
@@ -58,4 +81,4 @@ class FirstSearchViewController: UIViewController {
     }
     */
 
-
+}
