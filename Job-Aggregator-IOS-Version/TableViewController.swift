@@ -186,7 +186,8 @@ var vacancyArea = ""
                                                     salaryTo: json["data",i,"salaryTo"].doubleValue,
                                                     employer: json["data",i,"salaryTo"].string!,
                                                     experience: json["data",i,"experience"].string!,
-                                                    description: json["data",i,"description"].string!))
+                                                    description: json["data",i,"description"].string!,
+                                                    currency: json["data",i,"currency"].string! ))
                 }
             
                 print(self.vacancyList)

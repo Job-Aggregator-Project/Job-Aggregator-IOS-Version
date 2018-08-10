@@ -8,12 +8,12 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-
+import  RealmSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+var realm = try! Realm()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
           Thread.sleep(forTimeInterval: 2.5)
