@@ -65,20 +65,8 @@ var vacancyArea = ""
     }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellItem = vacancyList[indexPath.row]
-    if  let URL = URL(string: cellItem.url) {
-        if  UIApplication.shared.canOpenURL(URL) == true {
-        let svc = SFSafariViewController(url: URL)
-        self.present(svc, animated: true, completion: nil)
-    }
-    else
-    {    let ac = UIAlertController(title: "Ошибка", message: "Неверно введен URL адрес", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Ок", style: .cancel, handler: nil)
-        present(ac, animated: true, completion: nil)
-        ac.addAction(cancel)
-        }
-    }
-}
+    performSegue(withIdentifier: "aboutSegue", sender: self)
+ }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastitem = vacancyList.count - 1
         if indexPath.row == lastitem {
@@ -135,6 +123,13 @@ var vacancyArea = ""
             dvc.vacancyEditSalaryFrom = vacancySalaryFrom
             dvc.SwitchSalary = switchSalaryMain
             dvc.delage = self
+        }
+        if segue.identifier == "aboutSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let object = vacancyList[indexPath.row]
+                let dvc = segue.destination as! AboutViewController
+                dvc.vacancy = object
+            }
         }
 
     }

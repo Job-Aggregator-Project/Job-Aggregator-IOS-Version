@@ -19,6 +19,9 @@
 		C140B25721146A7F00EAC8B1 /* FirstSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */; };
 		C140B25B2116366900EAC8B1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25A2116366900EAC8B1 /* TableViewController.swift */; };
 		C140B25D21163EC400EAC8B1 /* VacancyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140B25C21163EC400EAC8B1 /* VacancyModel.swift */; };
+		C1593604211F316A00F1D8DA /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1593603211F316A00F1D8DA /* FavoriteTableViewController.swift */; };
+		C1593607211F31A800F1D8DA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1593606211F31A800F1D8DA /* FavoriteTableViewCell.swift */; };
+		C1593609211F324C00F1D8DA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1593608211F324C00F1D8DA /* AboutViewController.swift */; };
 		C1DF7242211CAD2E008D36EF /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF7241211CAD2E008D36EF /* EditTableViewController.swift */; };
 		C1DF7247211D7861008D36EF /* RealmVacancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF7246211D7861008D36EF /* RealmVacancy.swift */; };
 		C5CF6D15CEC3251516BC1B7D /* Pods_Job_Aggregator_IOS_VersionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 867AE8F2D6B36517D296CE3B /* Pods_Job_Aggregator_IOS_VersionTests.framework */; };
@@ -64,6 +67,9 @@
 		C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSearchViewController.swift; sourceTree = "<group>"; };
 		C140B25A2116366900EAC8B1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = "/Users/aleksandrsahnukov/Desktop/проекты/Job-Aggregator-IOS-Version/Job-Aggregator-IOS-Version/TableViewController.swift"; sourceTree = "<absolute>"; };
 		C140B25C21163EC400EAC8B1 /* VacancyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyModel.swift; sourceTree = "<group>"; };
+		C1593603211F316A00F1D8DA /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		C1593606211F31A800F1D8DA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		C1593608211F324C00F1D8DA /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C1DF7241211CAD2E008D36EF /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		C1DF7246211D7861008D36EF /* RealmVacancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmVacancy.swift; sourceTree = "<group>"; };
 		D76EFDEB574DAFE87EC4869B /* Pods-Job-Aggregator-IOS-VersionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Job-Aggregator-IOS-VersionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Job-Aggregator-IOS-VersionTests/Pods-Job-Aggregator-IOS-VersionTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 				C140B25A2116366900EAC8B1 /* TableViewController.swift */,
 				C140B25621146A7F00EAC8B1 /* FirstSearchViewController.swift */,
 				C1321B43211724FF00564774 /* VacancyTableViewCell.swift */,
+				C1593608211F324C00F1D8DA /* AboutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +209,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C1593605211F317900F1D8DA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C1593603211F316A00F1D8DA /* FavoriteTableViewController.swift */,
+				C1593606211F31A800F1D8DA /* FavoriteTableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		C1DF7243211D781E008D36EF /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +231,7 @@
 		C1DF7244211D7834008D36EF /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				C1593605211F317900F1D8DA /* Controller */,
 				C1DF7245211D7850008D36EF /* Model */,
 			);
 			path = Favorite;
@@ -447,11 +464,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1321B44211724FF00564774 /* VacancyTableViewCell.swift in Sources */,
+				C1593604211F316A00F1D8DA /* FavoriteTableViewController.swift in Sources */,
 				C140B25721146A7F00EAC8B1 /* FirstSearchViewController.swift in Sources */,
 				C1DF7247211D7861008D36EF /* RealmVacancy.swift in Sources */,
+				C1593607211F31A800F1D8DA /* FavoriteTableViewCell.swift in Sources */,
 				C1DF7242211CAD2E008D36EF /* EditTableViewController.swift in Sources */,
 				C10BEE9D211443FE00279627 /* AppDelegate.swift in Sources */,
 				C140B25B2116366900EAC8B1 /* TableViewController.swift in Sources */,
+				C1593609211F324C00F1D8DA /* AboutViewController.swift in Sources */,
 				C140B25D21163EC400EAC8B1 /* VacancyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -402,10 +402,10 @@
             </objects>
             <point key="canvasLocation" x="429.60000000000002" y="586.05697151424295"/>
         </scene>
-        <!--View Controller-->
+        <!--Описание-->
         <scene sceneID="cXH-Tj-Ff8">
             <objects>
-                <viewController id="wgE-x7-Lkr" sceneMemberID="viewController">
+                <viewController id="wgE-x7-Lkr" customClass="AboutViewController" customModule="Job_Aggregator_IOS_Version" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O2R-u4-jz0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,17 +446,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA3-Xk-dns">
-                                <rect key="frame" x="16" y="263" width="42" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xg-qc-i32">
+                                <rect key="frame" x="16" y="263" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="vacancyURL:" destination="wgE-x7-Lkr" eventType="touchUpInside" id="5Qo-ER-568"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DAM-jX-I0R"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Описание" id="qNf-SF-eNP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hYX-Se-LMo"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="vacancyArea" destination="HSX-Dl-kJm" id="SKh-qZ-oLD"/>
+                        <outlet property="vacancyDescription" destination="3TV-Fm-spR" id="J5T-Kg-IiC"/>
+                        <outlet property="vacancyEnployer" destination="V5w-6J-fWK" id="npZ-dZ-Fa8"/>
+                        <outlet property="vacancyExp" destination="dgW-DR-7Bt" id="PsD-Eh-G13"/>
+                        <outlet property="vacancyName" destination="TUT-xL-D6M" id="58Q-7g-CtR"/>
+                        <outlet property="vacancyURL" destination="7Xg-qc-i32" id="Ygc-Bi-5iA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIQ-nz-fGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,6 +549,7 @@
                                     <outlet property="vacancyMaxCell" destination="Tre-qY-Mia" id="R4E-ga-EpU"/>
                                     <outlet property="vacancyMinCell" destination="ElA-2O-pTj" id="ljZ-XM-BmH"/>
                                     <outlet property="vacancyNameCell" destination="pul-ok-oxf" id="HdY-NO-jyc"/>
+                                    <segue destination="wgE-x7-Lkr" kind="show" id="7ga-0Z-bsl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -585,4 +598,7 @@
         <image name="filtre" width="19" height="31"/>
         <image name="search button" width="47" height="47"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7vm-4h-ck0"/>
+    </inferredMetricsTieBreakers>
 </document>
