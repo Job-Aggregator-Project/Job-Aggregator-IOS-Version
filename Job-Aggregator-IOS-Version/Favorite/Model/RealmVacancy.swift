@@ -10,8 +10,7 @@
 import Foundation
 import RealmSwift
 
-class messages: Object {
-    @objc dynamic var messageText :String = ""
+class VacancyRealm: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var area: String = ""

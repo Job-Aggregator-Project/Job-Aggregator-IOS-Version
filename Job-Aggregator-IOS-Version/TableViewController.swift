@@ -175,7 +175,7 @@ var vacancyArea = ""
             { response in
                 let json = JSON(response.value as Any)
                 let count = json["data"].count
-                print(json)
+                
                 self.maxPage = json["last_page"].intValue
                 for i in 0..<count {
                     self.vacancyList.append(Vacancy(id: json["data",i,"id"].intValue,
@@ -190,7 +190,7 @@ var vacancyArea = ""
                                                     currency: json["data",i,"currency"].string! ))
                 }
             
-                print(self.vacancyList)
+              
                 self.tableView.reloadData()
                  self.sortArray()
                 self.tableView.reloadData()
@@ -216,6 +216,7 @@ var vacancyArea = ""
         }
 
     }
+    
 
 }
 

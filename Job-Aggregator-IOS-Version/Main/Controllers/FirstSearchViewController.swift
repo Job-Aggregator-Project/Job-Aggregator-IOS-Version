@@ -53,13 +53,14 @@ class FirstSearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "firstSearchSegue" {
-            let nav = segue.destination as! UINavigationController
-                let dvc = nav.topViewController as! TableViewController
+            let bar = segue.destination as! UITabBarController
+            let nav = bar.viewControllers![0] as! UINavigationController
+            let dvc = nav.topViewController as! TableViewController
             dvc.vacancyName = vacancyNameSearchText.text!
             dvc.vacancyArea = vacancyCitySearchText.text!
             }
