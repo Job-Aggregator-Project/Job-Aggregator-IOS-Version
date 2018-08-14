@@ -170,7 +170,7 @@ var vacancyArea = ""
             { response in
                 let json = JSON(response.value as Any)
                 let count = json["data"].count
-                
+
                 self.maxPage = json["last_page"].intValue
                 for i in 0..<count {
                     self.vacancyList.append(Vacancy(id: json["data",i,"id"].intValue,
@@ -179,10 +179,9 @@ var vacancyArea = ""
                                                     url: json["data",i,"url"].string!,
                                                     salaryFrom: json["data",i,"salaryFrom"].doubleValue,
                                                     salaryTo: json["data",i,"salaryTo"].doubleValue,
-                                                    employer: json["data",i,"salaryTo"].string!,
+                                                    employer: json["data",i,"employer"].string!,
                                                     experience: json["data",i,"experience"].string!,
-                                                    description: json["data",i,"description"].string!,
-                                                    currency: json["data",i,"currency"].string! ))
+                                                    description: json["data",i,"description"].string!))
                 }
             
               

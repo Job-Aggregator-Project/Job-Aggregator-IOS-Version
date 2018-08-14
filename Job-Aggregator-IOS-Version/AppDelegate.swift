@@ -9,14 +9,17 @@
 import UIKit
 import IQKeyboardManagerSwift
 import  RealmSwift
+
+var realm = try! Realm()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-var realm = try! Realm()
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-          Thread.sleep(forTimeInterval: 2.5)
+   //       Thread.sleep(forTimeInterval: 2.5)
         // Override point for customization after application launch.
         return true
     }

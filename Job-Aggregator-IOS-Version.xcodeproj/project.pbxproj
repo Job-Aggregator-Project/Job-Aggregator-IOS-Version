@@ -181,6 +181,14 @@
 			path = "Job-Aggregator-IOS-VersionUITests";
 			sourceTree = "<group>";
 		};
+		C139CEE72122C32A00C7A458 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1593606211F31A800F1D8DA /* FavoriteTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C140B2622116439000EAC8B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				C1593603211F316A00F1D8DA /* FavoriteTableViewController.swift */,
-				C1593606211F31A800F1D8DA /* FavoriteTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,9 +228,9 @@
 		C1DF7243211D781E008D36EF /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C140B264211643B600EAC8B1 /* Model */,
 				C140B263211643AB00EAC8B1 /* View */,
 				C140B2622116439000EAC8B1 /* Controllers */,
-				C140B264211643B600EAC8B1 /* Model */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -231,8 +238,9 @@
 		C1DF7244211D7834008D36EF /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				C1593605211F317900F1D8DA /* Controller */,
 				C1DF7245211D7850008D36EF /* Model */,
+				C139CEE72122C32A00C7A458 /* View */,
+				C1593605211F317900F1D8DA /* Controller */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";

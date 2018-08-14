@@ -10,6 +10,13 @@ import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var vacancyNameCell: UILabel!
+    @IBOutlet weak var vacancyAreaCell: UILabel!
+    @IBOutlet weak var vacancyMinCell: UILabel!
+    @IBOutlet weak var vacancyMaxCell: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

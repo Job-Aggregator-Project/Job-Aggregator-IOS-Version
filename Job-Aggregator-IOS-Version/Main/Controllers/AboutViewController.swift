@@ -8,8 +8,11 @@
 
 import UIKit
 import SafariServices
+import RealmSwift
+
+
 class AboutViewController: UIViewController {
-    var vacancy = Vacancy(id: 0, name: "", area: "", url: "", salaryFrom: 0, salaryTo: 0, employer: "", experience: "", description: "", currency: "")
+    var vacancy = Vacancy(id: 0, name: "", area: "", url: "", salaryFrom: 0, salaryTo: 0, employer: "", experience: "", description: "")
     
     @IBOutlet weak var vacancyName: UILabel!
     
@@ -27,23 +30,44 @@ class AboutViewController: UIViewController {
                 self.present(svc, animated: true, completion: nil)
             }
             else
-            {    let ac = UIAlertController(title: "Ошибка", message: "Неверно введен URL адрес", preferredStyle: .alert)
-                let cancel = UIAlertAction(title: "Ок", style: .cancel, handler: nil)
-                present(ac, animated: true, completion: nil)
-                ac.addAction(cancel)
+            {
+                alertController(title: "Ошибка", message: "Неверный  URL адрес")
+               
     }
         }
     }
     
     
     
+    @IBAction func saveFavoriteButton(_ sender: Any) {
+    let vacancyObj = VacancyRealm()
+       vacancyObj.id = vacancy.id
+        vacancyObj.area = vacancy.area
+         vacancyObj.name = vacancy.name
+         vacancyObj.descriptionVacancy = vacancy.description
+         vacancyObj.experience = vacancy.experience
+         vacancyObj.employer = vacancy.employer
+        vacancyObj.salaryFrom = vacancy.salaryFrom
+        vacancyObj.salaryTo = vacancy.salaryTo
+        vacancyObj.url = vacancy.url
+        try!  realm.write({
+            realm.add(vacancyObj)
+        })
+        alertController(title: "Успех", message: "Вы успешно сохранили вакансию")
+        
+        
+    }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
  vacancyURL.setTitle(vacancy.url, for: .normal)
-        vacancyDescription.text = vacancy.description
-        // Do any additional setup after loading the view.
+        vacancyDescription.text = vacancy.description.htmlToString
+        vacancyName.text = vacancy.name
+        vacancyArea.text = vacancy.area
+        vacancyExp.text = "Опыт: \(vacancy.experience)"
+        vacancyEnployer.text = vacancy.employer
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,4 +92,23 @@ class AboutViewController: UIViewController {
     }
     */
    
+    func alertController(title:String,message:String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Ок", style: .cancel, handler: nil)
+        present(ac, animated: true, completion: nil)
+        ac.addAction(cancel)
+    }
+}
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
 }
