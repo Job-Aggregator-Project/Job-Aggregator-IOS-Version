@@ -65,20 +65,8 @@ var vacancyArea = ""
     }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellItem = vacancyList[indexPath.row]
-    if  let URL = URL(string: cellItem.url) {
-        if  UIApplication.shared.canOpenURL(URL) == true {
-        let svc = SFSafariViewController(url: URL)
-        self.present(svc, animated: true, completion: nil)
-    }
-    else
-    {    let ac = UIAlertController(title: "Ошибка", message: "Неверно введен URL адрес", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Ок", style: .cancel, handler: nil)
-        present(ac, animated: true, completion: nil)
-        ac.addAction(cancel)
-        }
-    }
-}
+    performSegue(withIdentifier: "aboutSegue", sender: self)
+ }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastitem = vacancyList.count - 1
         if indexPath.row == lastitem {
@@ -136,6 +124,13 @@ var vacancyArea = ""
             dvc.SwitchSalary = switchSalaryMain
             dvc.delage = self
         }
+        if segue.identifier == "aboutSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let object = vacancyList[indexPath.row]
+                let dvc = segue.destination as! AboutViewController
+                dvc.vacancy = object
+            }
+        }
 
     }
     
@@ -175,7 +170,7 @@ var vacancyArea = ""
             { response in
                 let json = JSON(response.value as Any)
                 let count = json["data"].count
-                print(json)
+
                 self.maxPage = json["last_page"].intValue
                 for i in 0..<count {
                     self.vacancyList.append(Vacancy(id: json["data",i,"id"].intValue,
@@ -184,12 +179,12 @@ var vacancyArea = ""
                                                     url: json["data",i,"url"].string!,
                                                     salaryFrom: json["data",i,"salaryFrom"].doubleValue,
                                                     salaryTo: json["data",i,"salaryTo"].doubleValue,
-                                                    employer: json["data",i,"salaryTo"].string!,
+                                                    employer: json["data",i,"employer"].string!,
                                                     experience: json["data",i,"experience"].string!,
                                                     description: json["data",i,"description"].string!))
                 }
             
-                print(self.vacancyList)
+              
                 self.tableView.reloadData()
                  self.sortArray()
                 self.tableView.reloadData()
@@ -215,6 +210,7 @@ var vacancyArea = ""
         }
 
     }
+    
 
 }
 

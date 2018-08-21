@@ -7,7 +7,8 @@ target 'Job-Aggregator-IOS-Version' do
 
   # Pods for Job-Aggregator-IOS-Version
 pod 'Alamofire'
- pod 'SwiftyJSON', '~> 4.0'
+pod 'SwiftyJSON', '~> 4.0'
+pod 'RealmSwift'
 pod 'IQKeyboardManagerSwift'
   target 'Job-Aggregator-IOS-VersionTests' do
     inherit! :search_paths
