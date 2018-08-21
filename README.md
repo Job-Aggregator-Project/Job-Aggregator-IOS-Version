@@ -4,7 +4,7 @@
 
  This is a online Messange application that can be used for local usage in a small network
  # Screeshots
-![alt text](LogoGit//Group.png)
+![alt text](logoGit//Group.png)
 
 
 # Develop Team
