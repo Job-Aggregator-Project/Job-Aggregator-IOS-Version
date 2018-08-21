@@ -3,7 +3,7 @@
 
  This is a online Messange application that can be used for local usage in a small network
  # Screeshots
-![alt text](LogoGit//Group.jpg "Screeshots")
+![alt text](LogoGit//Group.png "Screeshots")
 # Develop Team
 alexsahnykov - IOS - https://github.com/alexsahnykov <br/>
 Fehty - BackEnd - https://github.com/stikbomb <br/>
