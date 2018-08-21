@@ -10,13 +10,14 @@ import UIKit
 import RealmSwift
 
 class FavoriteTableViewController: UITableViewController {
+  
     var vacancyRealmList: Results<VacancyRealm>!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   print("Жопа  \(vacancyRealmList)")
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        vacancyRealmList = realm.objects(VacancyRealm.self)
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -35,8 +36,10 @@ class FavoriteTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return vacancyRealmList.count
+        if vacancyRealmList.count != 0 {
+            return vacancyRealmList.count
+        }
+    else { return 0 }
     }
 
     
@@ -69,7 +72,7 @@ class FavoriteTableViewController: UITableViewController {
         let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             let item = self.vacancyRealmList[indexPath.row]
             try! realm.write({
-                realm.delete(item)
+                 realm.delete(item)
             })
             
             tableView.deleteRows(at:[indexPath], with: .middle)

@@ -9,8 +9,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 import  RealmSwift
+let realm = try! Realm()
 
-var realm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

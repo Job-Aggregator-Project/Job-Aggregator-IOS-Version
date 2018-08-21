@@ -13,7 +13,7 @@ import RealmSwift
 
 class AboutViewController: UIViewController {
     var vacancy = Vacancy(id: 0, name: "", area: "", url: "", salaryFrom: 0, salaryTo: 0, employer: "", experience: "", description: "")
-    
+
     @IBOutlet weak var vacancyName: UILabel!
     
     @IBOutlet weak var vacancyURL: UIButton!
